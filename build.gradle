@@ -1,0 +1,58 @@
+repositories {
+    ivy {
+        name "sharedthirdparty"
+        url "http://jenkins.exedio.com/job/ivyartifacts/lastSuccessfulBuild/artifact/repository/"
+        layout "pattern", {
+            artifact "[organisation]/[module]/[revision]/[artifact]-[type].jar"
+            //artifact "[organisation]/[module]/[revision]/[name].jar"
+            ivy "[organisation]/[module]/[revision]/ivy.xml"
+        }
+    }
+
+	ivy {
+		name "shared"
+		url "http://jenkins.exedio.com/job/"
+        layout "pattern", {
+				artifact "[module]/[revision]/artifact/build/success/[artifact](.[ext])"
+				artifact "[module]/[revision]/artifact/build/success/[artifact](-[type])(.[ext])"
+				artifact "[module]/[revision]/artifact/main/build/success/[artifact](.[ext])"
+				artifact "[module]/[revision]/artifact/main/build/success/[artifact](-[type])(.[ext])"
+				ivy "[module]/[revision]/artifact/main/build/success/ivy.xml"
+				ivy "[module]/[revision]/artifact/build/success/ivy.xml"
+        }
+    }
+
+    mavenCentral()
+}
+
+configurations {
+	runtimeTest
+}
+
+dependencies {
+	runtimeTest (
+		[group: 'com.exedio', name: 'cope', version: 8613, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'cronjob', 			version:  284, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'copeutil', 			version:  483, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'copeservletutil', 	version:   66, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'jspm', 				version:  123, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'sendmail', 			version:  257, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'cops', 				version:  379, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'csvtools', 			version:   83, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'insight', 			version:  724, configuration: 'runtime'],
+		//[group: 'com.exedio', name: 'facetfilter', 		version:   12, configuration: 'runtime'],
+	)
+}
+
+task showResolvedArtifacts << {
+	configurations.runtimeTest.each { println it.name }
+	//configurations.runtimeTest.resolvedConfiguration.resolvedArtifacts.each { println it }
+}
+
+task testRuntime << {
+	
+	if( configurations.runtimeTest.any{ !it.name.endsWith('.jar') } ) {
+		configurations.runtimeTest.findAll{ !it.name.endsWith('.jar') }.each { println it }
+		throw new GradleException('There are other artifacts than jars!')
+	}
+}
