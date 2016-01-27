@@ -31,16 +31,18 @@ configurations {
 
 dependencies {
 	runtimeTest (
-		[group: 'com.exedio', name: 'cope', version: 8613, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'cronjob', 			version:  284, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'copeutil', 			version:  483, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'copeservletutil', 	version:   66, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'jspm', 				version:  123, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'sendmail', 			version:  257, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'cops', 				version:  379, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'csvtools', 			version:   83, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'insight', 			version:  724, configuration: 'runtime'],
-		//[group: 'com.exedio', name: 'facetfilter', 		version:   12, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'cope', 			version: 8613, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'cronjob', 			version:  295, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'copeutil',			version:  483, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'copeservletutil',		version:   66, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'jspm',			version:  123, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'sendmail',			version:  258, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'cops',			version:  379, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'csvtools',			version:   83, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'insight', 			version:  724, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'facetfilter', 		version:   12, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'ldapconnector', 		version:   74, configuration: 'runtime'],
+		[group: 'com.exedio', name: 'copeconsole', 		version: 6640, configuration: 'runtime'],
 	)
 }
 
